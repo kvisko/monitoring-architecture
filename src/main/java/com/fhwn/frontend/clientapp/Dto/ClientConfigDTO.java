@@ -1,4 +1,4 @@
-package com.fhwn.frontend.monitoringarch.Dto;
+package com.fhwn.frontend.clientapp.Dto;
 
 public class ClientConfigDTO {
 	

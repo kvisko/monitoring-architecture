@@ -1,4 +1,4 @@
-package com.fhwn.frontend.monitoringarch.Dao;
+package com.fhwn.frontend.clientapp.Dao;
 
 public interface IDataCollectorDAO {
 	

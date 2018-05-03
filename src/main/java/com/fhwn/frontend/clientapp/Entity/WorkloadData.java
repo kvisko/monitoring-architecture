@@ -1,4 +1,4 @@
-package com.fhwn.frontend.monitoringarch.Entity;
+package com.fhwn.frontend.clientapp.Entity;
 
 import java.util.Date;
 

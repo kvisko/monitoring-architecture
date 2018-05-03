@@ -1,4 +1,4 @@
-package com.fhwn.frontend.monitoringarch.Util;
+package com.fhwn.frontend.clientapp.Util;
 
 public class ConnectionData {
 	

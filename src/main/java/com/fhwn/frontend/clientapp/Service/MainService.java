@@ -1,11 +1,11 @@
-package com.fhwn.frontend.monitoringarch.Service;
+package com.fhwn.frontend.clientapp.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.fhwn.frontend.monitoringarch.MonitoringArchApplication;
-import com.fhwn.frontend.monitoringarch.Dto.ClientConfigDTO;
-import com.fhwn.frontend.monitoringarch.Dto.FrequencyDTO;
+import com.fhwn.frontend.clientapp.MonitoringArchApplication;
+import com.fhwn.frontend.clientapp.Dto.ClientConfigDTO;
+import com.fhwn.frontend.clientapp.Dto.FrequencyDTO;
 
 @Component
 public class MainService implements IMainService {
