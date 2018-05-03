@@ -21,9 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.fhwn.ma.frontend.clientapp.ClientApp;
+import com.fhwn.ma.frontend.clientapp.Dao.ConfigManager;
 import com.fhwn.ma.frontend.clientapp.Dto.ClientConfigDTO;
 import com.fhwn.ma.frontend.clientapp.Dto.FrequencyDTO;
 import com.fhwn.ma.frontend.clientapp.Dto.WorkloadDTO;
+import com.fhwn.ma.frontend.clientapp.Entity.ConfigFile;
 import com.fhwn.ma.frontend.clientapp.Entity.WorkloadData;
 import com.fhwn.ma.frontend.clientapp.Service.DataCollectorService;
 import com.fhwn.ma.frontend.clientapp.Service.MainService;
@@ -45,6 +47,11 @@ public class ServiceCommunicator implements IServiceCommunicator {
 	public MainService mainService;
 	@Autowired
 	public DataCollectorService dataCollectorService;
+	
+	//@Autowired
+	//public ConfigManager configMgr;
+	
+	static ConfigFile config = ConfigManager.readConfigFile();
 
 	public FrequencyDTO getClientSettingsById(Long id) {
 
@@ -95,7 +102,9 @@ public class ServiceCommunicator implements IServiceCommunicator {
 		
 		System.out.println("Sending data to: " + postUrl);
 		
-		clientData.setClientId(9976L);
+		Long clientId = config.getClient_id();
+		
+		clientData.setClientId(clientId);
 		
 		System.out.println("--- DATA TO BE SENT: "+ clientData +" ---");
 

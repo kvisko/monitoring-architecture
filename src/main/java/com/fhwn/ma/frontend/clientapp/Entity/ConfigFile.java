@@ -2,21 +2,21 @@ package com.fhwn.ma.frontend.clientapp.Entity;
 
 public class ConfigFile {
 	
-	private String client_id;
+	private Long client_id;
 	private String client_ip;
 	private String client_port;
 	private String server_ip;
 	private String server_port;
-	private String dataColFreq;
-	private String dataUploadFreq;
+	private double dataColFreq;
+	private double dataUploadFreq;
 	
 	public ConfigFile() {}
 
-	public String getClient_id() {
+	public Long getClient_id() {
 		return client_id;
 	}
 
-	public void setClient_id(String client_id) {
+	public void setClient_id(Long client_id) {
 		this.client_id = client_id;
 	}
 
@@ -52,19 +52,19 @@ public class ConfigFile {
 		this.server_port = server_port;
 	}
 
-	public String getDataColFreq() {
+	public double getDataColFreq() {
 		return dataColFreq;
 	}
 
-	public void setDataColFreq(String dataColFreq) {
+	public void setDataColFreq(double dataColFreq) {
 		this.dataColFreq = dataColFreq;
 	}
 
-	public String getDataUploadFreq() {
+	public double getDataUploadFreq() {
 		return dataUploadFreq;
 	}
 
-	public void setDataUploadFreq(String dataUploadFreq) {
+	public void setDataUploadFreq(double dataUploadFreq) {
 		this.dataUploadFreq = dataUploadFreq;
 	}
 

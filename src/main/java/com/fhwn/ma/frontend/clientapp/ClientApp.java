@@ -13,7 +13,10 @@ import com.fhwn.ma.frontend.clientapp.WebService.ServiceCommunicator;
 public class ClientApp {
 
 	ServiceCommunicator serviceCommunicator;
-	static TaskTrigger taskTrigger = new TaskTrigger(60000, 240000);
+	//static ConfigManager configMgr = new ConfigManager();
+	static ConfigFile config = ConfigManager.readConfigFile();
+	
+	static TaskTrigger taskTrigger = new TaskTrigger(config.getDataColFreq(), config.getDataUploadFreq());
 
 	public static TaskTrigger getTaskTrigger() {
 		return taskTrigger;
@@ -41,23 +44,18 @@ public class ClientApp {
 		SpringApplication.run(ClientApp.class, args);
 		System.out.println("SpringApplication.run");
 		
-		ConfigManager configMgr = new ConfigManager();
-		configMgr.readConfigFile();
 
 		MainService mainService = new MainService();
-
-		// 1. pozvati server i iscitati setting za frequencies
-		System.out.println("Fetching client frequency settings");
+		
+		Long clientId = config.getClient_id();
 
 		// proveriti da li je klijent registrovan i vratiti id parametar, koji se
 		// kasnije prosledjuje serviceCommunicatoru
 		// FrequencyDTO frequencyDTO = serviceCommunicator.getClientSettingsById(5L);
-		// mainService.init(frequencyDTO.getCollectionFrequency(),
-		// frequencyDTO.getUploadFrequency());
 		
 		 //MonitoringArchApplication.startTaskTrigger();
 
-		 mainService.init(2000, 10000);
+		 mainService.init(config.getDataColFreq(), config.getDataUploadFreq());
 
 		System.out.println("SpringApplication.run.....");
 	}

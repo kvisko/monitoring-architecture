@@ -4,6 +4,6 @@
 	"client_port": "8888",
 	"server_ip": "localhost",
 	"server_port": "8080",
-	"dataColFreq": "2",
-	"dataUploadFreq": "5"
+	"dataColFreq": "10000",
+	"dataUploadFreq": "15000"
 }

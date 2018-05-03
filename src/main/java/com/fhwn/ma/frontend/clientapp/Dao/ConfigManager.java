@@ -1,6 +1,5 @@
 package com.fhwn.ma.frontend.clientapp.Dao;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -11,10 +10,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fhwn.ma.frontend.clientapp.Entity.ConfigFile;
 
+@Component
 public class ConfigManager {
 	
+
+	public ConfigManager() {
+	}
 	
-	public void readConfigFile() {
+	public static ConfigFile readConfigFile() {
+		
+		ConfigFile config = null;
 		
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(Feature.AUTO_CLOSE_SOURCE, true);
@@ -29,13 +34,17 @@ public class ConfigManager {
 			System.out.println("resource not found: " + respath);
 		
 		try {
-			ConfigFile config = mapper.readValue(inputStream, typeReference);
+			config = mapper.readValue(inputStream, typeReference);
 			System.out.println("ConfigFile read!");
 			System.out.println(config);
+			
+			return config;
 			
 		} catch (IOException e){
 			System.out.println("Unable to read config file: " + e.getMessage());
 		}
+		
+		return new ConfigFile();
 		
 	}
 	
