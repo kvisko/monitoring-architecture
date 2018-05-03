@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -139,15 +140,25 @@ public class ServiceCommunicator implements IServiceCommunicator {
 		return frequencyDTOsettings;
 	}
 
-	@RequestMapping(value = "sendEcho", method = RequestMethod.POST)
+	@RequestMapping(value = "sendEcho", method = RequestMethod.GET)
 	public Double sendEcho(@RequestBody Double value) {
 
-		System.out.println("Incoming echo request");
+		System.out.println("Incoming echo request..");
 
 		Double responseValue = value * 2;
 
 		return responseValue;
 
+	}
+	
+	@RequestMapping(path = "/echoResponse/{val}", method = RequestMethod.GET)
+	public Double echoResponse(@PathVariable Double val) {
+
+		System.out.println("Incoming echo request..");
+
+		Double responseValue = val * 2;
+
+		return responseValue;
 	}
 
 	@RequestMapping(value = "setConfiguration", method = RequestMethod.POST)

@@ -1,6 +1,5 @@
 package com.fhwn.ma.frontend.clientapp.Service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.fhwn.ma.frontend.clientapp.ClientApp;
@@ -21,9 +20,11 @@ public class MainService implements IMainService {
 	public void init(double collectionFrequency, double uploadFrequency) {
 		System.out.println("MainService.init");
 		
+		
 		ClientApp.startTaskTrigger();
 		
 	}
+	
 	
 	@Override
 	public void updateFrequencies(FrequencyDTO frequencyDTO) {

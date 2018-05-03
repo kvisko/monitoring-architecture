@@ -1,12 +1,8 @@
 package com.fhwn.ma.frontend.clientapp;
 
-import java.util.Timer;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.fhwn.ma.frontend.clientapp.Dto.FrequencyDTO;
 import com.fhwn.ma.frontend.clientapp.Service.MainService;
 import com.fhwn.ma.frontend.clientapp.Service.TaskTrigger;
 import com.fhwn.ma.frontend.clientapp.WebService.ServiceCommunicator;
@@ -15,7 +11,7 @@ import com.fhwn.ma.frontend.clientapp.WebService.ServiceCommunicator;
 public class ClientApp {
 
 	ServiceCommunicator serviceCommunicator;
-	static TaskTrigger taskTrigger = new TaskTrigger(2000, 10000);
+	static TaskTrigger taskTrigger = new TaskTrigger(60000, 240000);
 
 	public static TaskTrigger getTaskTrigger() {
 		return taskTrigger;
