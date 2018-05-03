@@ -31,7 +31,8 @@ public class WorkloadDTO {
 	
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Client ID:" + this.getClientId());
+		builder.append("\nClient ID :" + this.getClientId());
+		builder.append("\n");
 		
 		for(WorkloadData data:clientData) {
 			builder.append(data);

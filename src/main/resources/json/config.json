@@ -1,0 +1,9 @@
+{
+	"client_id": "9976",
+	"client_ip": "localhost",
+	"client_port": "8888",
+	"server_ip": "localhost",
+	"server_port": "8080",
+	"dataColFreq": "2",
+	"dataUploadFreq": "5"
+}

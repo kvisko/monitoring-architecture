@@ -96,6 +96,9 @@ public class ServiceCommunicator implements IServiceCommunicator {
 		System.out.println("Sending data to: " + postUrl);
 		
 		clientData.setClientId(9976L);
+		
+		System.out.println("--- DATA TO BE SENT: "+ clientData +" ---");
+
 
 		HttpEntity<Object> request = new HttpEntity<>(clientData, headers);
 		restTemplate.exchange(postUrl, HttpMethod.POST, request, new ParameterizedTypeReference<WorkloadDTO>() {

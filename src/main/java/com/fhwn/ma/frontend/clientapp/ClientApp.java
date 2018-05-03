@@ -3,6 +3,8 @@ package com.fhwn.ma.frontend.clientapp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.fhwn.ma.frontend.clientapp.Dao.ConfigManager;
+import com.fhwn.ma.frontend.clientapp.Entity.ConfigFile;
 import com.fhwn.ma.frontend.clientapp.Service.MainService;
 import com.fhwn.ma.frontend.clientapp.Service.TaskTrigger;
 import com.fhwn.ma.frontend.clientapp.WebService.ServiceCommunicator;
@@ -38,6 +40,9 @@ public class ClientApp {
 	public static void main(String[] args) {
 		SpringApplication.run(ClientApp.class, args);
 		System.out.println("SpringApplication.run");
+		
+		ConfigManager configMgr = new ConfigManager();
+		configMgr.readConfigFile();
 
 		MainService mainService = new MainService();
 
