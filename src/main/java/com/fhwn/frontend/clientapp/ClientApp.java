@@ -12,7 +12,7 @@ import com.fhwn.frontend.clientapp.Service.TaskTrigger;
 import com.fhwn.frontend.clientapp.WebService.ServiceCommunicator;
 
 @SpringBootApplication
-public class MonitoringArchApplication {
+public class ClientApp {
 
 	ServiceCommunicator serviceCommunicator;
 	static TaskTrigger taskTrigger = new TaskTrigger(2000, 10000);
@@ -40,7 +40,7 @@ public class MonitoringArchApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(MonitoringArchApplication.class, args);
+		SpringApplication.run(ClientApp.class, args);
 		System.out.println("SpringApplication.run");
 
 		MainService mainService = new MainService();

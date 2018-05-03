@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.fhwn.frontend.clientapp.MonitoringArchApplication;
+import com.fhwn.frontend.clientapp.ClientApp;
 import com.fhwn.frontend.clientapp.Dto.ClientConfigDTO;
 import com.fhwn.frontend.clientapp.Dto.FrequencyDTO;
 import com.fhwn.frontend.clientapp.Dto.WorkloadDTO;
@@ -105,14 +105,14 @@ public class ServiceCommunicator implements IServiceCommunicator {
 		double colFreq = (frequencyDTO.getCollectionFrequency() *1000);
 		double uploadFreq = (frequencyDTO.getUploadFrequency() * 1000);
 
-		TaskTrigger taskTrigger = MonitoringArchApplication.getTaskTrigger();
+		TaskTrigger taskTrigger = ClientApp.getTaskTrigger();
 		
 		System.out.println("-- current colFreq: "+taskTrigger.getDataCollectionFrequency()/1000+" second(s) -- new colFreq: "+colFreq/1000+" second(s)");
 		System.out.println("-- current upFreq: "+taskTrigger.getDataUploadFrequency()/1000+" second(s)-- new upFreq: "+uploadFreq/1000+" second(s)");
 						
-		MonitoringArchApplication.getNewTaskTrigger(colFreq, uploadFreq);
+		ClientApp.getNewTaskTrigger(colFreq, uploadFreq);
 		
-		MonitoringArchApplication.startTaskTrigger();
+		ClientApp.startTaskTrigger();
 		
 		System.out.println("--- FREQUENCY PARAMETERS CHANGED ---");
 

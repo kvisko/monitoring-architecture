@@ -3,7 +3,7 @@ package com.fhwn.frontend.clientapp.Service;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.fhwn.frontend.clientapp.MonitoringArchApplication;
+import com.fhwn.frontend.clientapp.ClientApp;
 import com.fhwn.frontend.clientapp.Dto.WorkloadDTO;
 import com.fhwn.frontend.clientapp.Entity.WorkloadData;
 import com.fhwn.frontend.clientapp.WebService.ServiceCommunicator;
@@ -28,7 +28,7 @@ public class TaskTrigger extends TimerTask {
 	public void execute() {
 		System.out.println("TaskTrigger.execute2");
 
-		TaskTrigger taskTrigger = MonitoringArchApplication.getTaskTrigger();
+		TaskTrigger taskTrigger = ClientApp.getTaskTrigger();
 		timer = new Timer();
 		timer.schedule(taskTrigger, 0, (long) this.getDataCollectionFrequency());
 		System.out.println("TaskTrigger.run");

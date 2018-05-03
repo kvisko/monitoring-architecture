@@ -3,7 +3,7 @@ package com.fhwn.frontend.clientapp.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.fhwn.frontend.clientapp.MonitoringArchApplication;
+import com.fhwn.frontend.clientapp.ClientApp;
 import com.fhwn.frontend.clientapp.Dto.ClientConfigDTO;
 import com.fhwn.frontend.clientapp.Dto.FrequencyDTO;
 
@@ -21,7 +21,7 @@ public class MainService implements IMainService {
 	public void init(double collectionFrequency, double uploadFrequency) {
 		System.out.println("MainService.init");
 		
-		MonitoringArchApplication.startTaskTrigger();
+		ClientApp.startTaskTrigger();
 		
 	}
 	
@@ -35,14 +35,14 @@ public class MainService implements IMainService {
 		double colFreq = (frequencyDTO.getCollectionFrequency() *1000);
 		double uploadFreq = (frequencyDTO.getUploadFrequency() * 1000);
 
-		TaskTrigger taskTrigger = MonitoringArchApplication.getTaskTrigger();
+		TaskTrigger taskTrigger = ClientApp.getTaskTrigger();
 		
 		System.out.println("-- current colFreq: "+taskTrigger.getDataCollectionFrequency()/1000+" second(s) -- new colFreq: "+colFreq/1000+" second(s)");
 		System.out.println("-- current upFreq: "+taskTrigger.getDataUploadFrequency()/1000+" second(s)-- new upFreq: "+uploadFreq/1000+" second(s)");
 						
-		MonitoringArchApplication.getNewTaskTrigger(colFreq, uploadFreq);
+		ClientApp.getNewTaskTrigger(colFreq, uploadFreq);
 		
-		MonitoringArchApplication.startTaskTrigger();
+		ClientApp.startTaskTrigger();
         
 		System.out.println("--- FREQUENCY PARAMETERS CHANGED ---");
 	}
