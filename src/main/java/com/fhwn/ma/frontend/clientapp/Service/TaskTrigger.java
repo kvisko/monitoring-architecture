@@ -1,12 +1,12 @@
-package com.fhwn.frontend.clientapp.Service;
+package com.fhwn.ma.frontend.clientapp.Service;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.fhwn.frontend.clientapp.ClientApp;
-import com.fhwn.frontend.clientapp.Dto.WorkloadDTO;
-import com.fhwn.frontend.clientapp.Entity.WorkloadData;
-import com.fhwn.frontend.clientapp.WebService.ServiceCommunicator;
+import com.fhwn.ma.frontend.clientapp.ClientApp;
+import com.fhwn.ma.frontend.clientapp.Dto.WorkloadDTO;
+import com.fhwn.ma.frontend.clientapp.Entity.WorkloadData;
+import com.fhwn.ma.frontend.clientapp.WebService.ServiceCommunicator;
 
 public class TaskTrigger extends TimerTask {
 

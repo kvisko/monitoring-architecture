@@ -1,4 +1,4 @@
-package com.fhwn.frontend.clientapp.Entity;
+package com.fhwn.ma.frontend.clientapp.Entity;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.fhwn.frontend.clientapp.Util;
+package com.fhwn.ma.frontend.clientapp.Util;
 
 public class ConnectionData {
 	

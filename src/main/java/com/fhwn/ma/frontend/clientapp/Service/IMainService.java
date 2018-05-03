@@ -1,6 +1,6 @@
-package com.fhwn.frontend.clientapp.Service;
+package com.fhwn.ma.frontend.clientapp.Service;
 
-import com.fhwn.frontend.clientapp.Dto.FrequencyDTO;
+import com.fhwn.ma.frontend.clientapp.Dto.FrequencyDTO;
 
 public interface IMainService {
 	

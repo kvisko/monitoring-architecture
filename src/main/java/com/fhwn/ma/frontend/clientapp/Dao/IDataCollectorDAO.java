@@ -1,4 +1,4 @@
-package com.fhwn.frontend.clientapp.Dao;
+package com.fhwn.ma.frontend.clientapp.Dao;
 
 public interface IDataCollectorDAO {
 	

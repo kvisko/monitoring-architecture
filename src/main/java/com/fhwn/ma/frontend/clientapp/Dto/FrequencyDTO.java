@@ -1,4 +1,4 @@
-package com.fhwn.frontend.clientapp.Dto;
+package com.fhwn.ma.frontend.clientapp.Dto;
 
 public class FrequencyDTO {
 	

@@ -1,11 +1,11 @@
-package com.fhwn.frontend.clientapp.Service;
+package com.fhwn.ma.frontend.clientapp.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.fhwn.frontend.clientapp.ClientApp;
-import com.fhwn.frontend.clientapp.Dto.ClientConfigDTO;
-import com.fhwn.frontend.clientapp.Dto.FrequencyDTO;
+import com.fhwn.ma.frontend.clientapp.ClientApp;
+import com.fhwn.ma.frontend.clientapp.Dto.ClientConfigDTO;
+import com.fhwn.ma.frontend.clientapp.Dto.FrequencyDTO;
 
 @Component
 public class MainService implements IMainService {

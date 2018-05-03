@@ -1,12 +1,12 @@
-package com.fhwn.frontend.clientapp.Service;
+package com.fhwn.ma.frontend.clientapp.Service;
 
 import java.util.Date;
 import org.springframework.stereotype.Component;
 
-import com.fhwn.frontend.clientapp.Dao.DataCollectorDAO;
-import com.fhwn.frontend.clientapp.Dto.WorkloadDTO;
-import com.fhwn.frontend.clientapp.Entity.WorkloadData;
-import com.fhwn.frontend.clientapp.WebService.ServiceCommunicator;
+import com.fhwn.ma.frontend.clientapp.Dao.DataCollectorDAO;
+import com.fhwn.ma.frontend.clientapp.Dto.WorkloadDTO;
+import com.fhwn.ma.frontend.clientapp.Entity.WorkloadData;
+import com.fhwn.ma.frontend.clientapp.WebService.ServiceCommunicator;
 
 @Component
 public class DataCollectorService implements IDataCollectorService {

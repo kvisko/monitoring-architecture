@@ -1,4 +1,4 @@
-package com.fhwn.frontend.clientapp.Dto;
+package com.fhwn.ma.frontend.clientapp.Dto;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
-import com.fhwn.frontend.clientapp.Entity.WorkloadData;
+import com.fhwn.ma.frontend.clientapp.Entity.WorkloadData;
 
 //@JsonRootName(value = "clientData")
 //@JsonPropertyOrder({ "clientData"})

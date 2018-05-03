@@ -1,4 +1,4 @@
-package com.fhwn.frontend.clientapp;
+package com.fhwn.ma.frontend.clientapp;
 
 import java.util.Timer;
 
@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.fhwn.frontend.clientapp.Dto.FrequencyDTO;
-import com.fhwn.frontend.clientapp.Service.MainService;
-import com.fhwn.frontend.clientapp.Service.TaskTrigger;
-import com.fhwn.frontend.clientapp.WebService.ServiceCommunicator;
+import com.fhwn.ma.frontend.clientapp.Dto.FrequencyDTO;
+import com.fhwn.ma.frontend.clientapp.Service.MainService;
+import com.fhwn.ma.frontend.clientapp.Service.TaskTrigger;
+import com.fhwn.ma.frontend.clientapp.WebService.ServiceCommunicator;
 
 @SpringBootApplication
 public class ClientApp {

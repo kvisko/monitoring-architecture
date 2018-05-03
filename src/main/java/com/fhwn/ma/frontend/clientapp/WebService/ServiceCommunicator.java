@@ -1,4 +1,4 @@
-package com.fhwn.frontend.clientapp.WebService;
+package com.fhwn.ma.frontend.clientapp.WebService;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,15 +19,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.fhwn.frontend.clientapp.ClientApp;
-import com.fhwn.frontend.clientapp.Dto.ClientConfigDTO;
-import com.fhwn.frontend.clientapp.Dto.FrequencyDTO;
-import com.fhwn.frontend.clientapp.Dto.WorkloadDTO;
-import com.fhwn.frontend.clientapp.Entity.WorkloadData;
-import com.fhwn.frontend.clientapp.Service.DataCollectorService;
-import com.fhwn.frontend.clientapp.Service.MainService;
-import com.fhwn.frontend.clientapp.Service.TaskTrigger;
-import com.fhwn.frontend.clientapp.Util.ConnectionData;
+import com.fhwn.ma.frontend.clientapp.ClientApp;
+import com.fhwn.ma.frontend.clientapp.Dto.ClientConfigDTO;
+import com.fhwn.ma.frontend.clientapp.Dto.FrequencyDTO;
+import com.fhwn.ma.frontend.clientapp.Dto.WorkloadDTO;
+import com.fhwn.ma.frontend.clientapp.Entity.WorkloadData;
+import com.fhwn.ma.frontend.clientapp.Service.DataCollectorService;
+import com.fhwn.ma.frontend.clientapp.Service.MainService;
+import com.fhwn.ma.frontend.clientapp.Service.TaskTrigger;
+import com.fhwn.ma.frontend.clientapp.Util.ConnectionData;
 
 @RestController
 @RequestMapping("/client")
