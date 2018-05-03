@@ -1,9 +1,11 @@
 {
-	"client_id": "9976",
-	"client_ip": "localhost",
-	"client_port": "8888",
-	"server_ip": "localhost",
-	"server_port": "8080",
-	"dataColFreq": "10000",
-	"dataUploadFreq": "15000"
+  "client_id" : 9976,
+  "client_alias" : "Milosev laptop",
+  "client_ip" : "localhost",
+  "client_port" : "8888",
+  "server_ip" : "localhost",
+  "server_port" : "8080",
+  "server_alias" : "Milos Server",
+  "dataColFreq" : 1000.0,
+  "dataUploadFreq" : 5000.0
 }

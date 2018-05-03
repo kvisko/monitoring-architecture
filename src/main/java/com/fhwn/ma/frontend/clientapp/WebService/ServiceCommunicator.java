@@ -48,9 +48,6 @@ public class ServiceCommunicator implements IServiceCommunicator {
 	@Autowired
 	public DataCollectorService dataCollectorService;
 	
-	//@Autowired
-	//public ConfigManager configMgr;
-	
 	static ConfigFile config = ConfigManager.readConfigFile();
 
 	public FrequencyDTO getClientSettingsById(Long id) {
@@ -60,7 +57,10 @@ public class ServiceCommunicator implements IServiceCommunicator {
 		RestTemplate restTemplate = new RestTemplate();
 
 		System.out.println("Begin GET request");
-		String getUrl = ConnectionData.HOST + ConnectionData.CLIENT + GET_CLIENT_SETTINGS + id;
+		//String getUrl = ConnectionData.HOST + ConnectionData.CLIENT + GET_CLIENT_SETTINGS + id;
+		
+		String getUrl = "http://" + config.getServer_ip() + ":" + config.getServer_port() + "/api" + ConnectionData.CLIENT + GET_CLIENT_SETTINGS + id;
+		
 		ResponseEntity<FrequencyDTO> getResponse = restTemplate.getForEntity(getUrl, FrequencyDTO.class);
 		System.out.println("Response for GET Request: " + getResponse.getBody());
 
@@ -78,9 +78,9 @@ public class ServiceCommunicator implements IServiceCommunicator {
 		RestTemplate restTemplate = new RestTemplate();
 
 		System.out.println("Begin POST request");
-		String postUrl = ConnectionData.HOST + ConnectionData.CLIENT + CREATE_NEW_CLIENT/* + UPLOAD_WORKLOAD_DATA */;
-		// WorkloadData dataTest = new WorkloadData(data);
-		// WorkloadData data = new WorkloadData();
+		//String postUrl = ConnectionData.HOST + ConnectionData.CLIENT + CREATE_NEW_CLIENT/* + UPLOAD_WORKLOAD_DATA */;
+		String postUrl = "http://" + config.getServer_ip() + ":" + config.getServer_port() + "/api" + ConnectionData.CLIENT + CREATE_NEW_CLIENT;
+		
 		ResponseEntity<String> postResponse = restTemplate.postForEntity(postUrl, data, String.class);
 		System.out.println("Response for Post Request: " + "\n" + postResponse.getBody());
 	}
@@ -98,12 +98,14 @@ public class ServiceCommunicator implements IServiceCommunicator {
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		String postUrl = ConnectionData.HOST + ConnectionData.CLIENT + ADD_CLIENT_DATA;
+	//	String postUrl = ConnectionData.HOST + ConnectionData.CLIENT + ADD_CLIENT_DATA;
+		
+		String postUrl = "http://" + config.getServer_ip() + ":" + config.getServer_port() + "/api" + ConnectionData.CLIENT + ADD_CLIENT_DATA;
+
 		
 		System.out.println("Sending data to: " + postUrl);
 		
 		Long clientId = config.getClient_id();
-		
 		clientData.setClientId(clientId);
 		
 		System.out.println("--- DATA TO BE SENT: "+ clientData +" ---");

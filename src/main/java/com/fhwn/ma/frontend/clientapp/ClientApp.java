@@ -1,8 +1,12 @@
 package com.fhwn.ma.frontend.clientapp;
 
+import java.io.IOException;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fhwn.ma.frontend.clientapp.Dao.ConfigManager;
 import com.fhwn.ma.frontend.clientapp.Entity.ConfigFile;
 import com.fhwn.ma.frontend.clientapp.Service.MainService;
@@ -40,14 +44,12 @@ public class ClientApp {
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
 		SpringApplication.run(ClientApp.class, args);
 		System.out.println("SpringApplication.run");
 		
 
 		MainService mainService = new MainService();
-		
-		Long clientId = config.getClient_id();
 
 		// proveriti da li je klijent registrovan i vratiti id parametar, koji se
 		// kasnije prosledjuje serviceCommunicatoru

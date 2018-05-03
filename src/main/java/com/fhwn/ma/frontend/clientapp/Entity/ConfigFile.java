@@ -3,10 +3,12 @@ package com.fhwn.ma.frontend.clientapp.Entity;
 public class ConfigFile {
 	
 	private Long client_id;
+	private String client_alias;
 	private String client_ip;
 	private String client_port;
 	private String server_ip;
 	private String server_port;
+	private String server_alias;
 	private double dataColFreq;
 	private double dataUploadFreq;
 	
@@ -68,11 +70,28 @@ public class ConfigFile {
 		this.dataUploadFreq = dataUploadFreq;
 	}
 
+	public String getClient_alias() {
+		return client_alias;
+	}
+
+	public void setClient_alias(String client_alias) {
+		this.client_alias = client_alias;
+	}
+
+	public String getServer_alias() {
+		return server_alias;
+	}
+
+	public void setServer_alias(String server_alias) {
+		this.server_alias = server_alias;
+	}
+
 	@Override
 	public String toString() {
-		return "ConfigFile [client_id=" + client_id + ", client_ip=" + client_ip + ", client_port=" + client_port
-				+ ", server_ip=" + server_ip + ", server_port=" + server_port + ", dataColFreq=" + dataColFreq
-				+ ", dataUploadFreq=" + dataUploadFreq + "]";
+		return "ConfigFile [client_id=" + client_id + ", client_alias=" + client_alias + ", client_ip=" + client_ip
+				+ ", client_port=" + client_port + ", server_ip=" + server_ip + ", server_port=" + server_port
+				+ ", server_alias=" + server_alias + ", dataColFreq=" + dataColFreq + ", dataUploadFreq="
+				+ dataUploadFreq + "]";
 	}
 
 }
