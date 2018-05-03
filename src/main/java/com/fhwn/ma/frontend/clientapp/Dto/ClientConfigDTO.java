@@ -24,7 +24,11 @@ public class ClientConfigDTO {
 	public void setPort(String port) {
 		this.port = port;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "ClientConfigDTO [ip=" + ip + ", port=" + port + "]";
+	}
 	
 
 }

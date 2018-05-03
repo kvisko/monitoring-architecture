@@ -46,8 +46,40 @@ public class ServiceCommunicator implements IServiceCommunicator {
 	@Autowired
 	public DataCollectorService dataCollectorService;
 
+	public FrequencyDTO getClientSettingsById(Long id) {
+
+		// retrieving current frequency values from the database
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		System.out.println("Begin GET request");
+		String getUrl = ConnectionData.HOST + ConnectionData.CLIENT + GET_CLIENT_SETTINGS + id;
+		ResponseEntity<FrequencyDTO> getResponse = restTemplate.getForEntity(getUrl, FrequencyDTO.class);
+		System.out.println("Response for GET Request: " + getResponse.getBody());
+
+		FrequencyDTO frequencyDTO = getResponse.getBody();
+		double dataCollectionFrequency = frequencyDTO.getCollectionFrequency();
+		double dataUploadFrequency = frequencyDTO.getUploadFrequency();
+
+		FrequencyDTO frequencyDTOsettings = new FrequencyDTO(dataCollectionFrequency, dataUploadFrequency);
+
+		return frequencyDTOsettings;
+	}
+	
+	public void uploadWorkloadData(WorkloadData data) {
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		System.out.println("Begin POST request");
+		String postUrl = ConnectionData.HOST + ConnectionData.CLIENT + CREATE_NEW_CLIENT/* + UPLOAD_WORKLOAD_DATA */;
+		// WorkloadData dataTest = new WorkloadData(data);
+		// WorkloadData data = new WorkloadData();
+		ResponseEntity<String> postResponse = restTemplate.postForEntity(postUrl, data, String.class);
+		System.out.println("Response for Post Request: " + "\n" + postResponse.getBody());
+	}
+	
 	@Override
-	public void uploadWorkloadData(WorkloadDTO clientData) {
+	public void uploadWorkloadDTO(WorkloadDTO clientData) {
 
 		RestTemplate restTemplate = new RestTemplate();
 		MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
@@ -60,6 +92,10 @@ public class ServiceCommunicator implements IServiceCommunicator {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		String postUrl = ConnectionData.HOST + ConnectionData.CLIENT + ADD_CLIENT_DATA;
+		
+		System.out.println("Sending data to: " + postUrl);
+		
+		clientData.setClientId(9976L);
 
 		HttpEntity<Object> request = new HttpEntity<>(clientData, headers);
 		restTemplate.exchange(postUrl, HttpMethod.POST, request, new ParameterizedTypeReference<WorkloadDTO>() {
@@ -72,30 +108,51 @@ public class ServiceCommunicator implements IServiceCommunicator {
 		
 	}
 
-	public void uploadWorkloadDataTest(WorkloadData data) {
-
-		RestTemplate restTemplate = new RestTemplate();
-
-		System.out.println("Begin POST request");
-		String postUrl = ConnectionData.HOST + ConnectionData.CLIENT + CREATE_NEW_CLIENT/* + UPLOAD_WORKLOAD_DATA */;
-		// WorkloadData dataTest = new WorkloadData(data);
-		// WorkloadData data = new WorkloadData();
-		ResponseEntity<String> postResponse = restTemplate.postForEntity(postUrl, data, String.class);
-		System.out.println("Response for Post Request: " + "\n" + postResponse.getBody());
-	}
-	
 	@RequestMapping(value = "/changeFrequencies", method = RequestMethod.POST)
+	@Override
 	public ResponseEntity<?> changeFrequencies(@RequestBody FrequencyDTO frequencyDTO) {
 
 		System.out.println("ServiceCommunicator: Accept POST request: setFrequencies");
 		
-		// TODO poslati trenutne collectedData pre menjanja freqs
+		// TODO poslati trenutne collectedData pre menjanja freqs da se ne bi gubili podaci pri promeni frequencija
 		
 		mainService.updateFrequencies(frequencyDTO);
 		
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
+	@RequestMapping(path = "/echoResponse/{val}", method = RequestMethod.GET)
+	@Override
+	public Double echoResponse(@PathVariable Double val) {
+
+		System.out.println("Incoming echo request..");
+
+		Double responseValue = val * 2;
+		
+		System.out.println("Echo response is " + responseValue);
+
+
+		return responseValue;
+	}
+
+	@RequestMapping(path = "/setConfiguration/{ip}/{port}", method = RequestMethod.GET)
+	public ResponseEntity<?> setConfiguration(@PathVariable String ip, @PathVariable String port) {
+
+		System.out.println("POST: Incoming setConfiguration request..");
+		System.out.println("New configuration is:");
+		
+		ClientConfigDTO clientConfig = new ClientConfigDTO(ip, port);
+		System.out.println(clientConfig);
+
+		
+		mainService.setConfiguration(clientConfig);
+		
+		//TODO restartuj application server i aplikaciju da bi uvazila novi port i novi app
+
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	// DEPRECATED
 	@RequestMapping(value = "/setFrequencies", method = RequestMethod.POST)
 	public ResponseEntity<?> setFrequencies(@RequestBody FrequencyDTO frequencyDTO) {
 
@@ -116,55 +173,6 @@ public class ServiceCommunicator implements IServiceCommunicator {
 		ClientApp.startTaskTrigger();
 		
 		System.out.println("--- FREQUENCY PARAMETERS CHANGED ---");
-
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-
-	public FrequencyDTO getClientSettingsById(Long id) {
-
-		// retrieving current frequency values from the database
-
-		RestTemplate restTemplate = new RestTemplate();
-
-		System.out.println("Begin GET request");
-		String getUrl = ConnectionData.HOST + ConnectionData.CLIENT + GET_CLIENT_SETTINGS + id;
-		ResponseEntity<FrequencyDTO> getResponse = restTemplate.getForEntity(getUrl, FrequencyDTO.class);
-		System.out.println("Response for GET Request: " + getResponse.getBody());
-
-		FrequencyDTO frequencyDTO = getResponse.getBody();
-		double dataCollectionFrequency = frequencyDTO.getCollectionFrequency();
-		double dataUploadFrequency = frequencyDTO.getUploadFrequency();
-
-		FrequencyDTO frequencyDTOsettings = new FrequencyDTO(dataCollectionFrequency, dataUploadFrequency);
-
-		return frequencyDTOsettings;
-	}
-
-	@RequestMapping(value = "sendEcho", method = RequestMethod.GET)
-	public Double sendEcho(@RequestBody Double value) {
-
-		System.out.println("Incoming echo request..");
-
-		Double responseValue = value * 2;
-
-		return responseValue;
-
-	}
-	
-	@RequestMapping(path = "/echoResponse/{val}", method = RequestMethod.GET)
-	public Double echoResponse(@PathVariable Double val) {
-
-		System.out.println("Incoming echo request..");
-
-		Double responseValue = val * 2;
-
-		return responseValue;
-	}
-
-	@RequestMapping(value = "setConfiguration", method = RequestMethod.POST)
-	public ResponseEntity<?> setConfiguration(@RequestBody ClientConfigDTO clientConfigDTO) {
-
-		mainService.setConfiguration(clientConfigDTO);
 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

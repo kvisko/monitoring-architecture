@@ -30,7 +30,7 @@ public class DataCollectorService implements IDataCollectorService {
 		System.out.println("DataCollectorService.uploadWorkload");
 
 		System.out.println("---UPLOADING WORKLOAD DATA---");
-		serviceCommunicator.uploadWorkloadData(workloadDTO);
+		serviceCommunicator.uploadWorkloadDTO(workloadDTO);
 		
 		return workloadDTO;
 
@@ -44,7 +44,7 @@ public class DataCollectorService implements IDataCollectorService {
 		data.setTimestamp(date);
 		data.setCpuUsage(dataCollectorDao.getCpuUsage());
 		data.setMemoryUsage(dataCollectorDao.getMemoryUsage());
-		serviceCommunicator.uploadWorkloadDataTest(data);
+		serviceCommunicator.uploadWorkloadData(data);
 		System.out.println("returning");
 		return data;
 

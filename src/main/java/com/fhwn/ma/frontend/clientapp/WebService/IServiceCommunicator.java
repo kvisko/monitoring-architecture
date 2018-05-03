@@ -7,8 +7,13 @@ import com.fhwn.ma.frontend.clientapp.Dto.WorkloadDTO;
 
 public interface IServiceCommunicator {
 	
-	void uploadWorkloadData(WorkloadDTO data);
+	void uploadWorkloadDTO(WorkloadDTO data);
 	
 	ResponseEntity<?> setFrequencies(FrequencyDTO frequencyDTO);
+	
+	ResponseEntity<?> changeFrequencies(FrequencyDTO frequencyDTO);
+	
+	Double echoResponse(Double val);
+
 
 }

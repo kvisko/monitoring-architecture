@@ -1,30 +1,23 @@
 package com.fhwn.ma.frontend.clientapp.Dto;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fhwn.ma.frontend.clientapp.Entity.WorkloadData;
 
-//@JsonRootName(value = "clientData")
-//@JsonPropertyOrder({ "clientData"})
-public class WorkloadDTO /*implements Iterable<WorkloadData>*/{
+public class WorkloadDTO {
+	
+	private Long clientId;
 	
 	@JsonProperty(value = "clientData")
 	private List<WorkloadData> clientData = new ArrayList<>();
 	
 	public WorkloadDTO() {}
 	
-	
 	public WorkloadDTO(List<WorkloadData> clientData){
         this.clientData= clientData;
     }
-	
 	
 	public void removeData() {
 		WorkloadData lastWorkloadData = this.clientData.get(this.clientData.size()-1);
@@ -38,6 +31,8 @@ public class WorkloadDTO /*implements Iterable<WorkloadData>*/{
 	
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
+		builder.append("Client ID:" + this.getClientId());
+		
 		for(WorkloadData data:clientData) {
 			builder.append(data);
 			builder.append("\n");
@@ -51,10 +46,13 @@ public class WorkloadDTO /*implements Iterable<WorkloadData>*/{
 	}
 
 
-//	@Override
-//	public Iterator<WorkloadData> iterator() {
-//		// TODO Auto-generated method stub
-//		return clientData.iterator();
-//	}
+	public Long getClientId() {
+		return clientId;
+	}
 
+
+	public void setClientId(Long clientId) {
+		this.clientId = clientId;
+	}
+	
 }
